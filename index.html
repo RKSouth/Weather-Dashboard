@@ -11,17 +11,20 @@
 
   <link rel="stylesheet" href="style.css" />
 
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Weather Dashboard</h1>
-      <p class="lead">Find your City</p>
+    <div class="container-fluid text-center text-white bg-dark p-3">
+      <title>Weather Dashboard</title>
+   
     </div>
-  </div>
 
 </head>
 
 
 <body>
+  <header>
+    <div class="container-fluid text-center text-white bg-dark p-3">
+      <h1 class="display-4">Weather Dashboard</h1>
+  </header>
+
     <!-- search area/city holder -->
     <div class="container-fluid"></div>
         <div class="row">
@@ -29,9 +32,10 @@
                 </br>
                 <h4>Search for your City Here</h4>
                 </br>
-                <input style="margin-right:10%" ></inpit>
-                <button >search</button>
-            </br>
+                <input class="city-input" style="margin-right:10%" ></inpit>
+                <button class="searchtn" ><i class="fa fa-search"></i>search</button>
+                <div id="cities-view"></div>
+            </br id="cities here">
             <!-- here is where the cities will be added -->
             </aside>
 <!-- where the weath will go -->
