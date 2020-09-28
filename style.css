@@ -1,7 +1,11 @@
-.asside  {
+/* .asside  {
 width: 30%;
 height: 50%;
 margin: 3%;
+border-style: groove;
+    border-width: medium;
+border-color: rgb(146, 146, 129);
+
 }
 
 body {
@@ -11,3 +15,41 @@ body {
 h4{
     padding:3px;
 }
+ul {
+    list-style-type: none;
+    width: 50%;
+    height: 30%;
+margin:10%;
+padding:5%;
+text-align: center;
+
+
+  
+  }
+
+button {
+    background-color: lightskyblue;
+    color: white
+}
+li {
+    
+} */
+
+
+.asside  {
+    width: 30%;
+    height: 50%;
+ 
+    margin:10%;
+padding:5%;
+text-align: center;
+    
+    }
+    
+    body {
+        
+        text-align: center;
+    }
+    h4{
+        padding:3px;
+    }
