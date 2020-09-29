@@ -65,13 +65,13 @@ You are required to submit the following for review:
 * [License](License)
 
 ## Technologies_Used
-* HTML (42.8%)
-* CSS (7.7%)
-* Javascript (49.5%) 
-* Bootstrap framework
-* Moment.js
-* jQuery
-* OpenWeather API
+* HTML (38.4%)
+* CSS (6.9%)
+* Javascript (54.7%) 
+* [Bootstrap] (https://getbootstrap.com/)
+* [Moment.js] (https://momentjs.com/)
+* [jQuery] (https://api.jquery.com/)
+* [OpenWeather API](https://openweathermap.org/api)
 
 ## Deployed Site
 [Weather-Dashboard](https://rksouth.github.io/Weather-Dashboard/)
