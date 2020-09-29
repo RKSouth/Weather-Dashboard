@@ -109,13 +109,18 @@ function getForecast (search){
 
   var present =moment();
 
-    titleArray= ["#title1","#title2","#title3","#title4","#title5"];
+    titleArray = ["#title1","#title2","#title3","#title4","#title5"];
+    contentArray = ["#content1","#content2","#content3","#content4","#content5"]
     newTitle= new Date(response.list.dt_txt);
     
 
 for (i=0; i<response.list.length; i++) {
   var cardTitle =$("<h6>").text(present.add(1, "days").format("M/D/YYYY"));
  $(titleArray[i]).append(cardTitle);
+
+ var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
+ $(contentArray[i]).append(img);
+
 
 }
 
