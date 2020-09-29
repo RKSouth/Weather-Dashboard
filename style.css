@@ -1,48 +1,8 @@
-/* .asside  {
-width: 30%;
-height: 50%;
-margin: 3%;
-border-style: groove;
-    border-width: medium;
-border-color: rgb(146, 146, 129);
-
-}
-
-body {
-    
-    text-align: center;
-}
-h4{
-    padding:3px;
-}
-ul {
-    list-style-type: none;
-    width: 50%;
-    height: 30%;
-margin:10%;
-padding:5%;
-text-align: center;
-
-
-  
-  }
-
-button {
-    background-color: lightskyblue;
-    color: white
-}
-li {
-    
-} */
-
 
 .asside  {
     width: 30%;
     height: 50%;
- 
     margin:10%;
-/* padding:5%; */
-/* text-align: center; */
     
     }
     
@@ -53,15 +13,54 @@ body {
 h4{
         padding:3px;
     }
-.card {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 5%;
-    margin-right: 3%;
-}
+
 .card-title {
     padding:1%;
 }
-.custom-column {
-    margin: 3%;
+
+
+.city {
+ text-align: left;
+ margin: 2%;
+ padding:1%;
+}
+
+.custom-column{
+background-color: lightcyan;
+}
+
+.uv1 {
+    background-color:green ;
+}
+.uv2 {
+    background-color:greenyellow ;
+}
+.uv3 {
+    background-color: yellow;
+}
+.uv4 {
+    background-color:rgb(251, 159, 38);
+}
+.uv5 {
+    background-color: orange;
+}
+.uv6 {
+    background-color:orangered ;
+    color: white;
+}
+.uv7 {
+    background-color: red;
+    color: white;
+}
+.uv8 {
+    background-color:maroon ;
+    color: white;
+}
+.uv9 {
+    background-color:magenta ;
+    color: white;
+}
+
+.uv10 {
+    background-color: purple;
 }

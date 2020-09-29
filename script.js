@@ -60,49 +60,45 @@ $(".card-holder").append(button);
       url: queryURL,
       method: "GET"
     }).then(function(response) { 
-      var uv = $("<p>").text("UV Index: ");
+    
+      var uv = $("<p>").text("UV Index: "+ response.value);
       $(".city").append(uv);
+    
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~HOW TO ADD COLOR???
-      // if(response.value==1){
-      //   //green
-      //   uv.addClass("btn-success");
-      // }else if(response.value ===2) {
-      //  //lightgreen
-      // }else if(response.value ===3){
-      //   //yellow
-      // }else if(response.value ===4){
-      //  //yellow orange
-      // }else if(response.value ===5){
-      //   // orange
-      // }else if(response.value ===6){
-      //   // red orange
-      // }else if(response.value ===7){
-      //   //red 
-      // }else if(response.value===8){
-      //   //maroon
-      // }else if(response.value ===9){
-      //   //magenta
-      // }else if(response.value ===10) {
-      //   //pink
-      // };
+      if(response.value<=1){
+        //green
+        uv.addClass("uv1");
+      }else if(response.value<= 2) {
+       //lightgreen
+       uv.addClass("uv2");
+      }else if(response.value <= 3){
+        //yellow
+        uv.addClass("uv3");
+      }else if(response.value <= 4){
+       //yellow orange
+       uv.addClass("uv4");
+      }else if(response.value <= 5){
+        // orange
+        uv.addClass("uv5");
+      }else if(response.value <= 6){
+        // red orange
+        uv.addClass("uv6");
+      }else if(response.value <= 7){
+        //red 
+        uv.addClass("uv7");
+      }else if(response.value<= 8){
+        //maroon
+        uv.addClass("uv8");
+      }else if(response.value <= 9){
+        //magenta
+        uv.addClass("uv9");
+      }else if(response.value <= 10) {
+        //pink
+        uv.addClass("uv10");
+      };
 
-      console.log(response);
-      console.log(queryURL);
-  
-  $(".city").empty();
-
-
-      var title =$("<h1>").text(response.name + " " +presentMonth + "/" + presentDay + "/" + presentYear);
-      $(".city").append(title);
-
-      var temperature = $("<p>").text("Temperature: " + response.main.temp);
-      $(".city").append(temperature);
-      var humidity = $("<p>").text("Humidity: " + response.main.humidity);
-      $(".city").append(humidity);
-      var windspd = $("<p>").text("Wind Spead: " + response.wind.speed);
-      $(".city").append(windspd);
     });
-    $("#today").append();
+  
   
   }
 
@@ -131,23 +127,25 @@ localStorage.setItem("search",JSON.stringify(citiesArray));
       method: "GET"
     }).then(function(response) { 
       
-      console.log(response.coord.lat);
+      console.log(response);
       console.log(queryURL);
   
   $(".city").empty();
 
-
-      var title =$("<h1>").text(response.name + " " +presentMonth + "/" + presentDay + "/" + presentYear);
+      //create and add current days weather area
+      var title =$("<h1>").text(response.name + " " +presentMonth + "/" + presentDay + "/" + presentYear).addClass("city-title");
       $(".city").append(title);
-
       var temperature = $("<p>").text("Temperature: " + response.main.temp);
       $(".city").append(temperature);
       var humidity = $("<p>").text("Humidity: " + response.main.humidity);
       $(".city").append(humidity);
       var windspd = $("<p>").text("Wind Spead: " + response.wind.speed);
       $(".city").append(windspd);
-
-      // getUVIndex(response.coord.lat, response.coord.lon);
+      var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+      $(".city-title").append(img);
+      // var UVIndex =getUVIndex(response.coord.lat, response.coord.lon);
+      // $(".city").append(UVIndex);
+      getUVIndex(response.coord.lat, response.coord.lon);
     });
     // $("#today").append();
     
