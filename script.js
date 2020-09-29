@@ -1,26 +1,24 @@
 $(document).ready(function(search) {
   
   //getting the array and stuff from local storage upon reload
-  citiesArray = ["Olympia"];
+  citiesArray = [];
+
   if (JSON.parse(localStorage.getItem("search")) != null){
-    citiesArray=JSON.parse(localStorage.getItem("search"));
+    citiesArray=JSON.parse(localStorage.getItem("search"));//get searches value
+   
   }
 
-  //add a button to each item in the array ~~~~~~~~~~~~should I put the onclick for the buttons here???s
-  citiesArray.forEach( element => {  
-var button =$("<button>").addClass("btn btn-primary btn-lg btn-block").text(element);
+  //add a button to each item in the array
+ 
+var button =$("<button>").addClass("btn btn-primary btn-lg btn-block").text(citiesArray[citiesArray.length -1]);
 //add the card
 $(".card-holder").append(button);
+ getForecast(citiesArray[citiesArray.length -1]);
+  getWeather(citiesArray[citiesArray.length -1]);
 
-  });
+  
 
-  // $(".btn btn-primary btn-lg btn-block").on("click", function(event) {
-  //   event.preventDefault();
-  //   getWeather(search);
-  //   getForecast(search);
-  //   getUVIndex();
-  // });
-
+ 
   $(".card-holder").on("click", "button", function() {
     getWeather($(this).text());
     // getUVIndex($(this).text());
@@ -166,7 +164,7 @@ $("#date-my").text(moment().format());
 
 moment().format('MMMM Do YYYY, h:mm:ss a'); 
 
-
+//for the 5 day forecast
 function getForecast (search){
     
   var queryURL = "https://api.openweathermap.org/data/2.5/forecast?&units=imperial&appid=48cb01e208735d9aa940904774b4bdab&q="+ search;
@@ -174,10 +172,8 @@ function getForecast (search){
     url: queryURL,
     method: "GET"
   }).then(function(response) { 
-    
     console.log(response);
-    console.log(queryURL);
-    // date= presentMonth + "/" + presentDay + "/" + presentYear
+ 
     $("#forecast").empty();
   $(".custom-column-header").empty();
   $(".custom-column-content").empty();
@@ -188,19 +184,21 @@ function getForecast (search){
     contentArray = ["#content1","#content2","#content3","#content4","#content5"];
     
 
-for (i=0; i<response.list.length; i++) {
-  var cardTitle =$("<h6>").text(present.add(1, "days").format("M/D/YYYY"));
- $(titleArray[i]).append(cardTitle);
-//fix timing of image ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
- var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
- $(contentArray[i]).append(img);
+for (i=0; i<5; i++) {
+ 
+    var cardTitle =$("<h6>").text(present.add(1, "days").format("M/D/YYYY"));
+    $(titleArray[i]).append(cardTitle);
+   //fix timing of image ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+    var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i*8].weather[0].icon + ".png");
+    $(contentArray[i]).append(img);
+   
+    var temp =$("<p>").text("Temp: "+ response.list[i*8].main.temp);
+    $(contentArray[i]).append(temp); 
+    var humid = $("<p>").text("Humidity: " + response.list[i*8].main.humidity);
+    $(contentArray[i]).append(humid);
 
- var temp =$("<p>").text("Temp: "+ response.list[i].main.temp);
- $(contentArray[i]).append(temp); 
- var humid = $("<p>").text("Humidity: " + response.list[i].main.humidity);
- $(contentArray[i]).append(humid);
-
-
+  
+  
 }
 
   });
