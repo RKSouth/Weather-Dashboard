@@ -41,15 +41,24 @@ li {
     height: 50%;
  
     margin:10%;
-padding:5%;
+/* padding:5%; */
 text-align: center;
     
     }
     
-    body {
+body {
         
         text-align: center;
     }
-    h4{
+h4{
         padding:3px;
     }
+.card {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5%;
+    margin-right: 3%;
+}
+.card-title {
+    padding:1%;
+}
