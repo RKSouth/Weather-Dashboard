@@ -75,10 +75,12 @@ localStorage.setItem("search",JSON.stringify(citiesArray));
     $("#today").append();
   
   }
+  
   let updateTime = function () {
     presentMonth = moment().format('M');
     presentDay = moment().format('DD');
     presentYear = moment().format('YY');
+    present=  moment().format("M/D/YYYY");
 
 }
 updateTime();
@@ -102,13 +104,18 @@ function getForecast (search){
     console.log(queryURL);
     // date= presentMonth + "/" + presentDay + "/" + presentYear
     $("#forecast").empty();
-    var title =$("<h1>").text("5 Day Forecast");
-    $(".forecast").append(title);
+  $(".custom-column-header").empty();
+  $(".custom-column-content").empty();
+
+  var present =moment();
+
+    titleArray= ["#title1","#title2","#title3","#title4","#title5"];
+    newTitle= new Date(response.list.dt_txt);
     
-for (i=0; i<response.list.length-1; i++) {
- 
-  var cardTitle =$("<h4>").text(new Date(response.list[i].dt_txt).toLocaleDateString())
- $(".forecast").append(cardTitle);
+
+for (i=0; i<response.list.length; i++) {
+  var cardTitle =$("<h6>").text(present.add(1, "days").format("M/D/YYYY"));
+ $(titleArray[i]).append(cardTitle);
 
 }
 
