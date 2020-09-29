@@ -60,6 +60,8 @@ localStorage.setItem("search",JSON.stringify(citiesArray));
       console.log(queryURL);
   
   $("#today").empty();
+
+
       var title =$("<h1>").text(response.name + " " +presentMonth + "/" + presentDay + "/" + presentYear);
       $(".city").append(title);
 
@@ -98,21 +100,15 @@ function getForecast (search){
     
     console.log(response);
     console.log(queryURL);
-    date= presentMonth + "/" + presentDay + "/" + presentYear
+    // date= presentMonth + "/" + presentDay + "/" + presentYear
     $("#forecast").empty();
     var title =$("<h1>").text("5 Day Forecast");
     $(".forecast").append(title);
-for (i=0; i<5; i++) {
+    
+for (i=0; i<response.list.length-1; i++) {
  
-
-  var col = $("<div>").addClass("col-md-2");
-  $(".forecast").append(col);
-  var card = $("<div>").addClass("card bg-primary text-white");
-  $(".forecast").append(card);
-  var body = $("<div>").addClass("card-body p-2");
-  $(".forecast").append(body);
-  var cardTitle =$("<h4>")
-
+  var cardTitle =$("<h4>").text(new Date(response.list[i].dt_txt).toLocaleDateString())
+ $(".forecast").append(cardTitle);
 
 }
 
