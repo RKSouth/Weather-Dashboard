@@ -20,6 +20,8 @@
 
 
 <body>
+  
+  <script src="https://momentjs.com/downloads/moment.js"></script>
   <header>
     <div class="container-fluid text-center text-white bg-dark p-3">
       <h1 class="display-4">Weather Dashboard</h1>
@@ -28,34 +30,34 @@
     <!-- search area/city holder -->
     <div class="container-fluid"></div>
         <div class="row m-3">
-            <aside class="col-lg-3 m-3 bg-light">
-              <form class="form-inline m-3">
-                <h4>Search for a City</h4>
-                <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
-                <div class="input-group mb-2 mr-sm-2">
-                  <div class="input-group-prepend">
-                
-                  </div>
-                  <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="City">
-                </div>
-              
+          <div class="col-lg-3 m-3 bg-light">
+            <aside>
+              <div class="card-body">
+                <h5 class="card-title">Search for a City</h5>
+                <input type="text" class="form-control float-right" id="inlineFormInputGroupUsername2" placeholder="City">
                 <button type="submit" id="submitbtn" class="btn btn-primary mb-2">Submit</button>
-              </form>
+              </div>
               <div class="card-holder"></div>
               <!-- <div class="card m-3" id="card" style="width: 18rem;"> -->
                 <!-- <div class="card-body">
                   <h5 class="card-title">Card title</h5>
                 </div> -->
             </aside>
-
+          </div>
 
 
 <!-- where the weath will go -->
-            <main class="col-lg-9">
+            <main class="col-lg-8 m-3 bg-light">
+              <div class="row">
                 <section class="city">City Stats</section>
-                <section class="forecast">Forecast</section>
+              </div>
+             
+              <div class="row-2 m-3 bg-light" class="forecast">
+                <section class="forecast">City Stats</section>
+                
+                 
+              </div>
             </main>
-
 
         </div>
     </div>

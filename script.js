@@ -1,7 +1,7 @@
 $(document).ready(function(search) {
   
   
-  citiesArray = [];
+  citiesArray = ["Olympia"];
   if (JSON.parse(localStorage.getItem("search")) != null){
     citiesArray=JSON.parse(localStorage.getItem("search"));
   }
@@ -20,6 +20,7 @@ $(".card-holder").append(button);
         event.preventDefault();
       citiesArray.push(search);
       getWeather(search);
+      getForecast(search);
         console.log(citiesArray);
        addCities(search);
 
@@ -58,14 +59,69 @@ localStorage.setItem("search",JSON.stringify(citiesArray));
       console.log(response);
       console.log(queryURL);
   
-  
-      var title =$("<h1>").text(response.main.name);
-      $("#city").append(title);
+  $("#today").empty();
+      var title =$("<h1>").text(response.name + " " +presentMonth + "/" + presentDay + "/" + presentYear);
+      $(".city").append(title);
+
+      var temperature = $("<p>").text("Temperature: " + response.main.temp);
+      $(".city").append(temperature);
+      var humidity = $("<p>").text("Humidity: " + response.main.humidity);
+      $(".city").append(humidity);
+      var windspd = $("<p>").text("Wind Spead: " + response.wind.speed);
+      $(".city").append(windspd);
     });
     $("#today").append();
-    $("#forcast").append();
-  }
   
+  }
+  let updateTime = function () {
+    presentMonth = moment().format('M');
+    presentDay = moment().format('DD');
+    presentYear = moment().format('YY');
+
+}
+updateTime();
+
+setInterval(updateTime, 60000);
+
+$("#date-my").text(moment().format());
+
+moment().format('MMMM Do YYYY, h:mm:ss a'); 
+
+
+function getForecast (search){
+    
+  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?&units=imperial&appid=48cb01e208735d9aa940904774b4bdab&q="+ search;
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) { 
+    
+    console.log(response);
+    console.log(queryURL);
+    date= presentMonth + "/" + presentDay + "/" + presentYear
+    $("#forecast").empty();
+    var title =$("<h1>").text("5 Day Forecast");
+    $(".forecast").append(title);
+for (i=0; i<5; i++) {
+ 
+
+  var col = $("<div>").addClass("col-md-2");
+  $(".forecast").append(col);
+  var card = $("<div>").addClass("card bg-primary text-white");
+  $(".forecast").append(card);
+  var body = $("<div>").addClass("card-body p-2");
+  $(".forecast").append(body);
+  var cardTitle =$("<h4>")
+
+
+}
+
+  });
+  $("#today").append();
+  $("#forcast").append();
+}
+
+
   //"main.dt_txt" is date
   //need temp
   //need humidty
