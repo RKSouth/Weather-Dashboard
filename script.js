@@ -5,6 +5,8 @@ $(document).ready(function(search) {
   if (JSON.parse(localStorage.getItem("search")) != null){
     citiesArray=JSON.parse(localStorage.getItem("search"));
   }
+
+  //add a button to each item in the array ~~~~~~~~~~~~should I put the onclick for the buttons here???s
   citiesArray.forEach( element => {  
 var button =$("<button>").addClass("btn btn-primary btn-lg btn-block").text(element);
 //add the card
@@ -12,15 +14,18 @@ $(".card-holder").append(button);
 
   });
 
-  $(".btn btn-primary btn-lg btn-block").on("click", function(event) {
-    event.preventDefault();
-    getWeather(search);
-    getForecast(search);
-  });
-
-  // $(".btn btn-primary btn-lg btn-block").on("click", "button", function() {
-  //   getWeather($(this).text());
+  // $(".btn btn-primary btn-lg btn-block").on("click", function(event) {
+  //   event.preventDefault();
+  //   getWeather(search);
+  //   getForecast(search);
+  //   getUVIndex();
   // });
+
+  $(".card-holder").on("click", "button", function() {
+    getWeather($(this).text());
+    // getUVIndex($(this).text());
+    getForecast($(this).text()); //not just text
+  });
   
   //click the submit buttonn
        $("#submitbtn").on("click", function(event) {
@@ -33,15 +38,22 @@ $(".card-holder").append(button);
         console.log(citiesArray);
        addCities(search);
 
+
       localStorage.removeItem("search");
       localStorage.setItem("search",JSON.stringify(citiesArray));
     
 
     });
-  
+    // var lat;
+    // var lon;
   //click the cities button
-  function getUVIndex (search){
-    
+  function getUVIndex (lat,lon){
+
+    //maybe not pass lat and lon in and out of function, maybe write the entire thing in here instead
+    console.log(lat);
+    console.log(lon);
+    // var lat;
+    // var lon;
     var queryURL = 
     "http://api.openweathermap.org/data/2.5/uvi?appid=48cb01e208735d9aa940904774b4bdab&lat=" + lat + "&lon=" + lon;
     $.ajax({
@@ -51,27 +63,28 @@ $(".card-holder").append(button);
       var uv = $("<p>").text("UV Index: ");
       $(".city").append(uv);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~HOW TO ADD COLOR???
-      if(response.value==1){
-        //green
-      }elseif(response.value ===2) {
-        //green
-      }elseif(response.value ===3){
-        //lightgreen
-      }elseif(response.value ===4){
-        //yellow
-      }elseif(response.value ===5){
-        //yellow orange
-      }elseif(response.value ===6){
-        //orange
-      }elseif(response.value ===7){
-        //red orange
-      }elseif(response.value===8){
-        //red 
-      }elseif(response.value ===9){
-        //maroon
-      }elseIF(response.value ===10) {
-        //magenta
-      };
+      // if(response.value==1){
+      //   //green
+      //   uv.addClass("btn-success");
+      // }else if(response.value ===2) {
+      //  //lightgreen
+      // }else if(response.value ===3){
+      //   //yellow
+      // }else if(response.value ===4){
+      //  //yellow orange
+      // }else if(response.value ===5){
+      //   // orange
+      // }else if(response.value ===6){
+      //   // red orange
+      // }else if(response.value ===7){
+      //   //red 
+      // }else if(response.value===8){
+      //   //maroon
+      // }else if(response.value ===9){
+      //   //magenta
+      // }else if(response.value ===10) {
+      //   //pink
+      // };
 
       console.log(response);
       console.log(queryURL);
@@ -118,7 +131,7 @@ localStorage.setItem("search",JSON.stringify(citiesArray));
       method: "GET"
     }).then(function(response) { 
       
-      console.log(response);
+      console.log(response.coord.lat);
       console.log(queryURL);
   
   $(".city").empty();
@@ -133,9 +146,11 @@ localStorage.setItem("search",JSON.stringify(citiesArray));
       $(".city").append(humidity);
       var windspd = $("<p>").text("Wind Spead: " + response.wind.speed);
       $(".city").append(windspd);
+
+      // getUVIndex(response.coord.lat, response.coord.lon);
     });
-    $("#today").append();
-  
+    // $("#today").append();
+    
   }
   
   let updateTime = function () {
@@ -178,7 +193,7 @@ function getForecast (search){
 for (i=0; i<response.list.length; i++) {
   var cardTitle =$("<h6>").text(present.add(1, "days").format("M/D/YYYY"));
  $(titleArray[i]).append(cardTitle);
-
+//fix timing of image ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
  var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
  $(contentArray[i]).append(img);
 
