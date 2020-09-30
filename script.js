@@ -183,21 +183,21 @@ function getForecast (search){
     titleArray = ["#title1","#title2","#title3","#title4","#title5"];
     contentArray = ["#content1","#content2","#content3","#content4","#content5"];
     
-
-for (i=0; i<5; i++) {
- 
+  var j=0;
+for (i=0; i<40; i++) {
+ if(response.list[i].dt_txt.includes("15:00:00")){
     var cardTitle =$("<h6>").text(present.add(1, "days").format("M/D/YYYY"));
-    $(titleArray[i]).append(cardTitle);
+    $(titleArray[j]).append(cardTitle);
    //fix timing of image ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
-    var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i*8].weather[0].icon + ".png");
-    $(contentArray[i]).append(img);
+    var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
+    $(contentArray[j]).append(img);
    
-    var temp =$("<p>").text("Temp: "+ response.list[i*8].main.temp);
-    $(contentArray[i]).append(temp); 
-    var humid = $("<p>").text("Humidity: " + response.list[i*8].main.humidity);
-    $(contentArray[i]).append(humid);
-
-  
+    var temp =$("<p>").text("Temp: "+ response.list[i].main.temp);
+    $(contentArray[j]).append(temp); 
+    var humid = $("<p>").text("Humidity: " + response.list[i].main.humidity);
+    $(contentArray[j]).append(humid);
+  j+=1;
+ }
   
 }
 
