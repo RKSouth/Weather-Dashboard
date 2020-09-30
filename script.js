@@ -52,8 +52,7 @@ $(".card-holder").append(button);
     console.log(lon);
     // var lat;
     // var lon;
-    var queryURL = 
-    "http://api.openweathermap.org/data/2.5/uvi?appid=48cb01e208735d9aa940904774b4bdab&lat=" + lat + "&lon=" + lon;
+    var queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=48cb01e208735d9aa940904774b4bdab&lat=" + lat + "&lon=" + lon;
     $.ajax({
       url: queryURL,
       method: "GET"
