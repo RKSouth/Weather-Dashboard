@@ -18,9 +18,9 @@
 * HTML (38.4%)
 * CSS (6.9%)
 * Javascript (54.7%) 
-* [Bootstrap] (https://getbootstrap.com/)
-* [Moment.js] (https://momentjs.com/)
-* [jQuery] (https://api.jquery.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [Moment.js](https://momentjs.com/)
+* [jQuery](https://api.jquery.com/)
 * [OpenWeather API](https://openweathermap.org/api)
 
 ## Deployed Site
@@ -47,6 +47,10 @@ Building this was the most challenging part of the code for me. I wanted to make
 
 [Stackoverflow-cardcolumns](https://stackoverflow.com/questions/34140793/bootstrap-4-responsive-cards-in-card-columns)
 ![Stackoverflow-cardcolumns](Assets/Stack-overflow.png)
+
+My html looks similar to the example given on stack overflow, however I didn't use any of the filler stuff because I was adding my text areas using jQuery instead.
+
+![MyCardColumns](Assets/Cardcolumns.png)
 
 ### __4. Other__
 
