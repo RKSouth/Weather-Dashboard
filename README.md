@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 #  Weather-Dashboard
 
 ### A simple app that pulls data from openweather api to display weather outlooks for multiple cities.
@@ -44,6 +38,8 @@ Weather forecasts can be searched in a few ways. However, for most people lookin
 A forecast without the current weather conditions is weird, it's just not done.
 
 In order to do this I created a function that pulled in data from openweather and added it the page with a concatinated string everytime a button was pushed. I made sure that the button push cleared out the previous string and did not reload the page as well using prevent default and .empty. I did this in a similar way for the forecast section, just pulling from a different data set (that gave me a 5 day forecast) and making sure it ran in a for loop so I could pull data out for 5 days instead of 1 with just a single method. 
+
+![Getting-the-Weather](Assets/CodeImg.png)
  
 ### __3. A 5 day Forecast__
 
