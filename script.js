@@ -124,8 +124,6 @@ localStorage.setItem("search",JSON.stringify(citiesArray));
       method: "GET"
     }).then(function(response) { 
       
-      console.log(response);
-      console.log(queryURL);
   
   $(".city").empty();
 
